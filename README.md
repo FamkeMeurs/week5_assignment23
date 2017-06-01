@@ -3,6 +3,7 @@ Creative Technology - Bachelor year 1
 Module 4 - Algorithms in Create 
 Made by: Maartje Aalders, Marloes ten Hage, Famke van Meurs and Mirel Nijhuis
 
+``` 
 
 float angle = 0 ;
 float aVelocity = 1;
@@ -107,3 +108,4 @@ class Flower {
   }
 }
 
+```
