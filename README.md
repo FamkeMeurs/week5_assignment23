@@ -40,3 +40,50 @@ class MSDS {
     aVelocity = momentum * (1/mass);
   }
 }
+
+
+
+class Flower {
+  float [] force;
+  float [] velocity;
+  MSDS [] segments;
+
+  Flower(int numOfSegments, float segmentsLength) {
+    force = new float [numOfSegments];
+    velocity = new float [numOfSegments];
+    segments = new MSDS [numOfSegments];
+    for (int i=0; i < segments.length; i++) {
+      segments[i] = new MSDS(segmentsLength);
+    }
+  }
+
+  void Calculate() {
+    for (int i = 0; i < segments.length; i++) {
+      force[i]=segments[i].fm;
+      velocity[i]=segments[i].aVelocity;
+    }
+
+    for (int j = 1; j < force.length; j++) {
+      segments[j-1].fm = force[j-1] -force[j];
+    }
+
+    for (int k = 1; k < velocity.length; k++) {
+      segments[k].aVelocity = velocity[k] - velocity[k-1];
+    }
+  }
+
+  void move() {
+    Calculate();
+    for (int i = 0; i < segments.length; i++) {
+      segments[i].move();
+    }
+  }
+
+  void display() {
+    rotate(PI);
+    for (int i = 0; i < segments.length; i++) {
+      segments[i].display();
+    }
+  }
+}
+
